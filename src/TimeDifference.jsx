@@ -40,18 +40,25 @@ const TimeDifference = () => {
   const handleTimeChange = (event) => {
     const inputTime = event.target.value;
     setInputTime(inputTime);
-
+  
     if (inputTime) {
-      const date = new Date(`1970-01-01T${inputTime}:00`);
-
+      const [hours, minutes] = inputTime.split(':');
+      const date = new Date();
+  
       if (conversionType === 'BRtoDE') {
-        const brazilTime = new Date(date.toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
-        const germanyTime = new Date(brazilTime.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
-        setConvertedTime(germanyTime.toTimeString().slice(0, 8)); // Formato HH:MM:SS
-      } else {
+        date.setHours(hours);
+        date.setMinutes(minutes);
+  
+        // Convertendo a hora do Brasil para a Alemanha
         const germanyTime = new Date(date.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
-        const brazilTime = new Date(germanyTime.toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
-        setConvertedTime(brazilTime.toTimeString().slice(0, 8)); // Formato HH:MM:SS
+        setConvertedTime(germanyTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
+      } else {
+        // Convertendo a hora da Alemanha para o Brasil
+        date.setHours(hours);
+        date.setMinutes(minutes);
+  
+        const brazilTime = new Date(date.toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+        setConvertedTime(brazilTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
       }
     } else {
       setConvertedTime('');
