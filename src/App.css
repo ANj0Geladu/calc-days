@@ -1,21 +1,23 @@
 .container {
-    background: rgb(75, 52, 158);
     text-align: center;
     margin-top: 50px;
+
   }
-  
+ .body {
+  background-image: url('./assets/photo_2024-05-17_19-40-28.jpg') ;
+}
   .time-display {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-    background: rgb(45, 96, 70);
+    background: rgb(73, 43, 184);
   }
   
   .flag {
     width: 25px;
     height: auto;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
   
