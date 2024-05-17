@@ -4,6 +4,7 @@ import germanyFlag from './assets/germany.png'; // Caminho para a bandeira da Al
 import './App.css';
 
 const TimeDifference = () => {
+  const [timeDifference, setTimeDifference] = useState(0);
   const [inputTime, setInputTime] = useState('');
   const [convertedTime, setConvertedTime] = useState('');
   const [conversionType, setConversionType] = useState('BRtoDE'); // 'BRtoDE' or 'DEtoBR'
@@ -20,6 +21,10 @@ const TimeDifference = () => {
       // Hora atual na Alemanha (CET/CEST - UTC+1/UTC+2)
       const germanyTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
 
+      // Calcular a diferença de horas
+      const diffInHours = (germanyTime - brazilTime) / 1000 / 60 / 60;
+
+      setTimeDifference(diffInHours);
       setCurrentGermanyTime(germanyTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
       setCurrentBrazilTime(brazilTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
     };
@@ -37,22 +42,17 @@ const TimeDifference = () => {
     setInputTime(inputTime);
 
     if (inputTime) {
-      const [hours, minutes] = inputTime.split(':');
-      const date = new Date();
-      date.setHours(parseInt(hours));
-      date.setMinutes(parseInt(minutes));
-      date.setSeconds(0);
-      date.setMilliseconds(0);
+      const date = new Date(`1970-01-01T${inputTime}:00`);
 
       if (conversionType === 'BRtoDE') {
-        // Converter Brasil para Alemanha: adicionar 5 horas
-        date.setHours(date.getHours() + 5);
+        const brazilTime = new Date(date.toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+        const germanyTime = new Date(brazilTime.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
+        setConvertedTime(germanyTime.toTimeString().slice(0, 8)); // Formato HH:MM:SS
       } else {
-        // Converter Alemanha para Brasil: subtrair 5 horas
-        date.setHours(date.getHours() - 5);
+        const germanyTime = new Date(date.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
+        const brazilTime = new Date(germanyTime.toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+        setConvertedTime(brazilTime.toTimeString().slice(0, 8)); // Formato HH:MM:SS
       }
-
-      setConvertedTime(date.toTimeString().slice(0, 8)); // Formato HH:MM:SS
     } else {
       setConvertedTime('');
     }
@@ -61,6 +61,7 @@ const TimeDifference = () => {
   return (
     <div className="container">
       <h1>Diferença de Horário dai pra cá</h1>
+      <p>A diferença de horário entre o Brasil e a Alemanha é de {timeDifference.toFixed(2)} horas, amor.</p>
       <div className="time-display">
         <img src={brazilFlag} alt="Bandeira do Brasil" className="flag" />
         <p>Hora atual no Brasil: {currentBrazilTime}</p>
@@ -107,4 +108,3 @@ const TimeDifference = () => {
 };
 
 export default TimeDifference;
-
