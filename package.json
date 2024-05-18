@@ -2,7 +2,7 @@
   "name": "calculadora",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ANj0Geladu.github.io/calc-days/tree/master",
+  "homepage": "https://ANj0Geladu/calc-days.github.io/tree/main",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
