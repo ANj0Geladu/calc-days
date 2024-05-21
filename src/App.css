@@ -1,23 +1,54 @@
-.container {
-    text-align: center;
-    margin-top: 50px;
 
-  }
- .body {
-  background-image: url('./assets/photo_2024-05-17_19-40-28.jpg') ;
+.container {
+  background-image: url('./assets/photo_2024-05-17_19-40-28.jpg');
+  text-align: center;
+  display: block; /* use 'flex' em vez de 'flexbox' */
+  background-size: cover; /* ou 'contain' dependendo do efeito desejado */
+  background-position: center; /* centraliza a imagem */
+  background-repeat: no-repeat; /* evita repetição da imagem */
+  height: 100vh; /* define a altura do contêiner */
+  margin-top: 20px;
 }
-  .time-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    background: rgb(73, 43, 184);
-  }
-  
-  .flag {
-    width: 25px;
-    height: auto;
-    margin-right: 10px;
-    border-radius: 20px;
-  }
-  
+
+.tituloDoTexoPrinc {
+  font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(to right, 
+        red, rgb(239, 158, 9), rgb(59, 59, 24), rgb(40, 243, 40), rgb(58, 227, 227), blue, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+.brasil{
+  color: rgb(23, 208, 54);
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; /* Cria a borda preta */
+  font-size: 20px;
+}
+.alemanha{
+  color:rgb(173, 29, 34);
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; /* Cria a borda preta */
+  font-size: 20px;
+}
+
+.time-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  background: rgba(129, 126, 138, 0);
+}
+
+.flag {
+  width: 25px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 20px;
+}

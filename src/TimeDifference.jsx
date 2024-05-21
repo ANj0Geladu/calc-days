@@ -69,20 +69,23 @@ const TimeDifference = () => {
     }
   };
 
+  // {timeDifference.toFixed(2)}
+
   return (
     <div className="container">
-      <h1>Diferença de Horário dai pra cá</h1>
-      <p>A diferença de horário entre o Brasil e a Alemanha é de {timeDifference.toFixed(2)}horas, amor.</p>
+      <h1 className='titulo'>Diferença de Horário dai pra cá</h1>
+      <p className='tituloDoTexoPrinc'>saudades de vc, linda gostosa.</p>
       <div className="time-display">
         <img src={brazilFlag} alt="Bandeira do Brasil" className="flag" />
-        <p>Hora atual no Brasil: {currentBrazilTime}</p>
+        <p className='brasil'>Hora atual no Brasil: {currentBrazilTime}</p>
       </div>
       <div className="time-display">
         <img src={germanyFlag} alt="Bandeira da Alemanha" className="flag" />
-        <p>Hora atual na Alemanha: {currentGermanyTime}</p>
+        <p className='alemanha' >Hora atual na Alemanha: {currentGermanyTime}</p>
       </div>
 
-      <div style={{ marginTop: '20px' }}>
+
+      <div style={{ marginTop: '200px' }}>
         <button onClick={() => setConversionType('BRtoDE')} style={{ marginRight: '10px' }}>
           Converter Brasil para Alemanha
         </button>
@@ -105,7 +108,7 @@ const TimeDifference = () => {
       </div>
 
       <div style={{ marginTop: '20px' }}>
-        <label style={{marginTop: '10px'}} >
+        <label style={{marginTop: '10px', color: '-moz-initial'}} >
           {conversionType === 'BRtoDE' ? 'Hora correspondente na Alemanha:' : 'Hora correspondente no Brasil:'}
           <input
             type="text"
