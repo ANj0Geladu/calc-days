@@ -69,8 +69,8 @@ const TimeDifference = () => {
         <img src={germanyFlag} alt="Bandeira da Alemanha" className="flag" />
         <p className='alemanha' >Hora atual na Alemanha: {currentGermanyTime}</p>
       </div>
-
-      <div style={{ marginTop: '20px' }}>
+        <br/>
+      <div style={{ marginTop: '320px' }}>
         <button onClick={() => setConversionType('BRtoDE')} style={{ marginRight: '10px' }}>
           Converter Brasil para Alemanha
         </button>
